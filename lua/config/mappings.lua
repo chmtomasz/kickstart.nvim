@@ -1,11 +1,25 @@
 -- oil
-vim.keymap.set('n', '<leader>e', require('oil').toggle_float, { desc = 'Open oil float' })
+vim.keymap.set('n', '<leader>o', require('oil').toggle_float, { desc = 'Open oil float' })
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+
+-- New mapping for Nvim Tree toggle moved from plugin config.
+vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { desc = 'Toggle Nvim Tree' })
+
+-- DAP keybindings
+vim.keymap.set('n', '<F5>', require('dap').continue, { desc = 'DAP: Continue' })
+vim.keymap.set('n', '<F10>', require('dap').step_over, { desc = 'DAP: Step Over' })
+vim.keymap.set('n', '<F11>', require('dap').step_into, { desc = 'DAP: Step Into' })
+vim.keymap.set('n', '<F12>', require('dap').step_out, { desc = 'DAP: Step Out' })
+vim.keymap.set('n', '<leader>db', require('dap').toggle_breakpoint, { desc = 'DAP: Toggle Breakpoint' })
+vim.keymap.set('n', '<leader>dr', require('dap').repl.open, { desc = 'DAP: Open REPL' })
+
+-- DAP UI keybinding
+vim.keymap.set('n', '<leader>du', require('dapui').toggle, { desc = 'DAP UI: Toggle' })
 
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
