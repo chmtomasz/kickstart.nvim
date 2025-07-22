@@ -9,7 +9,7 @@ return {
   },
   config = function()
     local servers = {
-      lua_ls = {
+      lua_language_server = {
         settings = {
           Lua = {
             completion = { callSnippet = 'Replace' },

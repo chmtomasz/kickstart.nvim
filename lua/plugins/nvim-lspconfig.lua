@@ -4,7 +4,7 @@ return {
   event = { 'BufReadPre', 'BufNewFile' },
   opts = {
     servers = {
-      lua_language_server = {},
+      lua_ls = {},
       pyright = {},
       clangd = {},
     },
