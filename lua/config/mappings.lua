@@ -1,3 +1,5 @@
+vim.keymap.set('n', '<tab>', '<cmd>BufferLineCycleNext<CR>', { desc = 'Next buffer' })
+vim.keymap.set('n', '<S-tab>', '<cmd>BufferLineCyclePrev<CR>', { desc = 'Previous buffer' })
 -- oil
 vim.keymap.set('n', '<leader>o', require('oil').toggle_float, { desc = 'Open oil float' })
 
@@ -22,6 +24,8 @@ vim.keymap.set('n', '<F11>', require('dap').step_into, { desc = 'DAP: Step Into'
 vim.keymap.set('n', '<F12>', require('dap').step_out, { desc = 'DAP: Step Out' })
 vim.keymap.set('n', '<leader>db', require('dap').toggle_breakpoint, { desc = 'DAP: Toggle Breakpoint' })
 vim.keymap.set('n', '<leader>dr', require('dap').repl.open, { desc = 'DAP: Open REPL' })
+vim.keymap.set('n', '<leader>ba', require('harpoon.mark').add_file, { desc = 'Harpoon: Add file to marks' })
+vim.keymap.set('n', '<leader>bb', require('harpoon.ui').toggle_quick_menu, { desc = 'Harpoon: Toggle quick menu' })
 
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
