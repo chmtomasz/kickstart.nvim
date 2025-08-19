@@ -1,5 +1,8 @@
 vim.keymap.set('n', '<tab>', '<cmd>BufferLineCycleNext<CR>', { desc = 'Next buffer' })
 vim.keymap.set('n', '<S-tab>', '<cmd>BufferLineCyclePrev<CR>', { desc = 'Previous buffer' })
+-- add sace after clicking ctrl s
+vim.keymap.set('n', '<C-s>', '<cmd>w<CR>', { desc = 'Save file' })
+
 -- oil
 vim.keymap.set('n', '<leader>o', require('oil').toggle_float, { desc = 'Open oil float' })
 
