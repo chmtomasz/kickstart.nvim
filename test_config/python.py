@@ -41,6 +41,8 @@ def main():
     # Display the updated DataFrame
     print("\nUpdated DataFrame:")
     print(df)
+    # sugggestion: call calc_fibonacci with n = 10
+
 
     
 

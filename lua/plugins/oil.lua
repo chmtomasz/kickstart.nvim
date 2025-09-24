@@ -1,11 +1,14 @@
 return {
   'stevearc/oil.nvim',
+  lazy = true,
   ---@module 'oil'
   ---@type oil.SetupOpts
   opts = {
     -- Set custom keymaps for oil's float window
     keymaps = {
-      ["q"] = function() vim.cmd("close") end,
+      ['q'] = function()
+        vim.cmd 'close'
+      end,
     },
   },
   -- Optional dependencies

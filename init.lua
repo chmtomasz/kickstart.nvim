@@ -97,28 +97,28 @@ require('lazy').setup({
   },
 })
 
-require('mason').setup()
-require('bufferline').setup {
-  options = {
-    offsets = {
-      {
-        filetype = 'NvimTree',
-        text = 'File Explorer',
-        highlight = 'Directory',
-        separator = true, -- use a "true" to enable the default, or set your own character
-      },
-    },
-  },
-}
-require('project_nvim').setup {}
+-- require('mason').setup()
+-- require('bufferline').setup {
+--   options = {
+--     offsets = {
+--       {
+--         filetype = 'NvimTree',
+--         text = 'File Explorer',
+--         highlight = 'Directory',
+--         separator = true, -- use a "true" to enable the default, or set your own character
+--       },
+--     },
+--   },
+-- }
+-- require('project_nvim').setup {}
 -- lua
-require('nvim-tree').setup {
-  sync_root_with_cwd = true,
-  respect_buf_cwd = true,
-  update_focused_file = {
-    enable = true,
-    update_root = true,
-  },
-}
-require('telescope').load_extension 'projects'
+-- require('nvim-tree').setup {
+--   sync_root_with_cwd = true,
+--   respect_buf_cwd = true,
+--   update_focused_file = {
+--     enable = true,
+--     update_root = true,
+--   },
+-- }
+-- require('telescope').load_extension 'projects'
 require 'config.mappings'

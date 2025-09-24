@@ -21,10 +21,10 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { desc = 'Toggle Nvim Tree' })
 
 -- DAP keybindings
-vim.keymap.set('n', '<F5>', require('dap').continue, { desc = 'DAP: Continue' })
-vim.keymap.set('n', '<F10>', require('dap').step_over, { desc = 'DAP: Step Over' })
-vim.keymap.set('n', '<F11>', require('dap').step_into, { desc = 'DAP: Step Into' })
-vim.keymap.set('n', '<F12>', require('dap').step_out, { desc = 'DAP: Step Out' })
+vim.keymap.set('n', '<leader>dc', require('dap').continue, { desc = 'DAP: Continue' })
+vim.keymap.set('n', '<leader>do', require('dap').step_over, { desc = 'DAP: Step Over' })
+vim.keymap.set('n', '<leader>di', require('dap').step_into, { desc = 'DAP: Step Into' })
+vim.keymap.set('n', '<leader>do', require('dap').step_out, { desc = 'DAP: Step Out' })
 vim.keymap.set('n', '<leader>db', require('dap').toggle_breakpoint, { desc = 'DAP: Toggle Breakpoint' })
 vim.keymap.set('n', '<leader>dr', require('dap').repl.open, { desc = 'DAP: Open REPL' })
 vim.keymap.set('n', '<leader>ba', require('harpoon.mark').add_file, { desc = 'Harpoon: Add file to marks' })
