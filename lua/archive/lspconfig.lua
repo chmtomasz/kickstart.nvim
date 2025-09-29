@@ -71,7 +71,7 @@ return {
       end,
     })
     for name, config in pairs(servers) do
-      require('lspconfig')[name].setup {
+      vim.lsp.config[name].setup {
         capabilities = capabilities,
         settings = config.settings,
       }

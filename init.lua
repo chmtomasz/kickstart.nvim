@@ -121,4 +121,5 @@ require('lazy').setup({
 --   },
 -- }
 -- require('telescope').load_extension 'projects'
+-- require('plugins.transparent').enable
 require 'config.mappings'
