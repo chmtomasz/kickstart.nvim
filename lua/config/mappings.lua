@@ -97,6 +97,9 @@ local mappings = {
 	{ 'n', '<leader>f.', tb('oldfiles'), 'Search Recent Files' },
 	{ 'n', '<leader><leader>', tb('buffers'), 'Search Buffers' },
 	{ 'n', '<leader>/', telescope_buffer_fuzzy, 'Fuzzy in Buffer' },
+
+	-- navigation
+	{ 'n', '<leader>q', ':qa <CR>', 'Leave neovim' },
 }
 
 -- Apply all mappings

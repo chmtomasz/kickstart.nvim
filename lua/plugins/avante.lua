@@ -18,6 +18,7 @@ return {
     -- add any opts here
     -- for example
     provider = 'copilot',
+    model = 'claude-sonet-4',
     behaviour = {
       auto_suggestions = false, -- Experimental stage
     },
