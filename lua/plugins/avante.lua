@@ -18,21 +18,52 @@ return {
     -- add any opts here
     -- for example
     provider = 'copilot',
-    model = 'claude-sonet-4',
-    behaviour = {
-      auto_suggestions = false, -- Experimental stage
+    providers = {
+      copilot = {
+        model = 'claude-sonnet-4',
+      },
+    },
+    diff = {
+      autojump = true,
+      list_opener = 'copen',
+    },
+    hints = { enabled = true },
+    windows = {
+      position = 'right',
+      wrap = true,
+      width = 30,
+      sidebar_header = {
+        align = 'center',
+        rounded = true,
+      },
+      edit = {
+        border = 'rounded',
+        start_insert = true,
+      },
+      ask = {
+        floating = false,
+        start_insert = true,
+        border = 'rounded',
+        focus_on_apply = 'ours',
+      },
+    },
+    highlights = {
+      diff = {
+        current = 'DiffText',
+        incoming = 'DiffAdd',
+      },
     },
   },
   dependencies = {
     'nvim-lua/plenary.nvim',
     'MunifTanjim/nui.nvim',
     --- The below dependencies are optional,
-    'echasnovski/mini.pick', -- for file_selector provider mini.pick
+    'echasnovski/mini.pick',         -- for file_selector provider mini.pick
     'nvim-telescope/telescope.nvim', -- for file_selector provider telescope
-    'ibhagwan/fzf-lua', -- for file_selector provider fzf
-    'stevearc/dressing.nvim', -- for input provider dressing
-    'folke/snacks.nvim', -- for input provider snacks
-    'nvim-tree/nvim-web-devicons', -- or echasnovski/mini.icons
+    'ibhagwan/fzf-lua',              -- for file_selector provider fzf
+    'stevearc/dressing.nvim',        -- for input provider dressing
+    'folke/snacks.nvim',             -- for input provider snacks
+    'nvim-tree/nvim-web-devicons',   -- or echasnovski/mini.icons
     {
       -- support for image pasting
       'HakonHarnes/img-clip.nvim',
