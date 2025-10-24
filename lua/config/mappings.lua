@@ -81,9 +81,11 @@ local mappings = {
 	-- Terminals
 	{ 'n', '<leader>th', '<cmd>ToggleTerm direction=horizontal<CR>', 'Terminal horizontal' },
 	{ 'n', '<leader>tf', '<cmd>ToggleTerm direction=float<CR>', 'Terminal float' },
+	{ 'n', '<leader>h', function() require('toggleterm').toggle(1, nil, 'horizontal') end, 'Open horizontal terminal' },
 
 	-- Git / Tools
 	{ 'n', '<leader>lg', '<cmd>LazyGit<CR>', 'LazyGit' },
+
 
 	-- Telescope family
 	{ 'n', '<leader>fh', tb('help_tags'), 'Search Help' },
@@ -123,6 +125,7 @@ local function register_groups()
 		{ '<leader>f', group = 'Find (Telescope)' },
 		{ '<leader>t', group = 'Terminal' },
 		{ '<leader>l', group = 'LSP/Format' },
+		{ '<leader>cp', group = 'Copilot Chat' },
 		{ '<leader>h', group = 'Git Hunk' }, -- gitsigns buffer local maps still added on attach
 	}
 end

@@ -13,9 +13,13 @@ def fibonacci(n):
     elif n == 2:
         return [0, 1]
     
+    # Adding memoization for optimization
+    memo = {0: 0, 1: 1}
+
     fib_sequence = [0, 1]
     for i in range(2, n):
-        next_value = fib_sequence[i - 1] + fib_sequence[i - 2]
+        next_value = memo.get(i - 1, fib_sequence[i - 1]) + memo.get(i - 2, fib_sequence[i - 2])
+        memo[i] = next_value
         fib_sequence.append(next_value)
     
     return fib_sequence
