@@ -34,11 +34,14 @@ return {
     -- Terminal mode keymaps for easy navigation
     function _G.set_terminal_keymaps()
       local opts = { buffer = 0 }
-      vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
+      -- Use double escape to avoid conflicts with shell programs
+      vim.keymap.set('t', '<esc><esc>', [[<C-\><C-n>]], opts)
       vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
       vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
       vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
       vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
+      -- Ensure Enter works properly in terminal
+      vim.keymap.set('t', '<CR>', '<CR>', opts)
     end
 
     -- Apply terminal keymaps when terminal is opened

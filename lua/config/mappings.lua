@@ -51,6 +51,8 @@ local mappings = {
 	{ 'n', '<Esc>', '<cmd>nohlsearch<CR>', 'Clear search highlight' },
 	{ 'n', '<leader>q', vim.diagnostic.setloclist, 'Diagnostics to loclist' },
 	{ 't', '<Esc><Esc>', '<C-\\><C-n>', 'Exit terminal mode' },
+	{ 't', '<CR>', '<CR>', 'Enter in terminal' },
+	{ 't', '<C-v><CR>', '<CR>', 'Literal Enter in terminal' },
 	{ 'n', '<C-h>', '<C-w><C-h>', 'Window left' },
 	{ 'n', '<C-l>', '<C-w><C-l>', 'Window right' },
 	{ 'n', '<C-j>', '<C-w><C-j>', 'Window down' },
@@ -58,12 +60,29 @@ local mappings = {
 	{ 'n', '<leader>e', ':NvimTreeToggle<CR>', 'Toggle Nvim Tree' },
 	{ 'n', '<leader>o', lazy_require('oil', 'toggle_float'), 'Oil float' },
 
+	-- Clipboard operations
+	{ { 'n', 'v' }, '<leader>y', '"+y', 'Yank to system clipboard' },
+	{ 'n', '<leader>Y', '"+Y', 'Yank line to system clipboard' },
+	{ { 'n', 'v' }, '<leader>p', '"+p', 'Paste from system clipboard' },
+	{ { 'n', 'v' }, '<leader>P', '"+P', 'Paste before from system clipboard' },
+
 	-- Formatting
 	{ { 'n', 'v' }, '<leader>ll', function()
 			lazy_require('conform', function(c)
 				c.format { async = true, lsp_format = 'fallback' }
 			end)()
 		end, 'Format buffer/range' },
+
+	-- LSP Code Actions & Diagnostics
+	{ { 'n', 'v' }, '<leader>fa', vim.lsp.buf.code_action, 'Code Action' },
+	{ 'n', '<leader>fq', vim.diagnostic.setqflist, 'Diagnostics to Quickfix' },
+	{ 'n', '<leader>fl', vim.diagnostic.setloclist, 'Diagnostics to Loclist' },
+	{ 'n', '[d', vim.diagnostic.goto_prev, 'Previous diagnostic' },
+	{ 'n', ']d', vim.diagnostic.goto_next, 'Next diagnostic' },
+	{ 'n', '[e', function() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR }) end, 'Previous error' },
+	{ 'n', ']e', function() vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR }) end, 'Next error' },
+	{ 'n', '<leader>fd', vim.diagnostic.open_float, 'Show diagnostic details' },
+	{ 'n', '<leader>lf', function() vim.lsp.buf.format({ async = true }) end, 'LSP Format document' },
 
 	-- DAP
 	{ 'n', '<leader>dc', lazy_require('dap', 'continue'), 'DAP Continue' },
@@ -121,12 +140,19 @@ local function register_groups()
 	if not ok then return end
 	wk.add {
 		{ '<leader>d', group = 'DAP' },
+		{ '<leader>dp', group = 'DAP Python' },
 		{ '<leader>b', group = 'Buffer / Harpoon' },
-		{ '<leader>f', group = 'Find (Telescope)' },
-		{ '<leader>t', group = 'Terminal' },
+		{ '<leader>f', group = 'Find (Telescope) / Fix (LSP)' },
+		{ '<leader>t', group = 'Terminal / Test' },
 		{ '<leader>l', group = 'LSP/Format' },
 		{ '<leader>cp', group = 'Copilot Chat' },
 		{ '<leader>h', group = 'Git Hunk' }, -- gitsigns buffer local maps still added on attach
+		{ '<leader>r', group = 'Run Code / REPL' },
+		{ '<leader>c', group = 'CMake' },
+		{ '<leader>p', group = 'Competitive Programming' },
+		{ '<leader>v', group = 'Virtual Environment' },
+		{ '<leader>n', group = 'Neogen (Docstrings)' },
+		{ '<leader>i', group = 'Import Organization' },
 	}
 end
 register_groups()

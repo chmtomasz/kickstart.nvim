@@ -32,3 +32,22 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 vim.opt.conceallevel = 2
+
+
+-- Auto-show diagnostic in floating window on cursor hover
+vim.api.nvim_create_autocmd("CursorHold", {
+  callback = function()
+    local opts = {
+      focusable = false,
+      close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+      border = 'rounded',
+      source = 'always',
+      prefix = ' ',
+    }
+    vim.diagnostic.open_float(nil, opts)
+  end
+})
+
+-- Reduce the delay before CursorHold triggers
+vim.opt.updatetime = 1000
+
