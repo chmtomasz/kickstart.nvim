@@ -4,8 +4,8 @@ return {
     'CRAG666/code_runner.nvim',
     cmd = { 'RunCode', 'RunFile', 'RunProject', 'RunClose' },
     keys = {
-      { '<leader>rr', ':RunCode<CR>', desc = 'Run current file' },
-      { '<leader>rf', ':RunFile<CR>', desc = 'Run file' },
+      { '<leader>rr', ':RunCode toggleterm<CR>', desc = 'Run current file' },
+      { '<leader>rf', ':RunFile toggleterm<CR>', desc = 'Run file' },
       { '<leader>rp', ':RunProject<CR>', desc = 'Run project' },
       { '<leader>rc', ':RunClose<CR>', desc = 'Close runner' },
     },
