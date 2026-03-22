@@ -10,7 +10,7 @@ return {
       return 'make'
     end
   end,
-  event = 'VeryLazy',
+  cmd = { 'AvanteAsk', 'AvanteChat', 'AvanteToggle', 'AvanteBuild', 'AvanteEdit', 'AvanteSwitchProvider' },
   version = false, -- Never set this value to "*"! Never!
   ---@module 'avante'
   ---@type avante.Config
@@ -35,7 +35,7 @@ return {
     {
       -- support for image pasting
       'HakonHarnes/img-clip.nvim',
-      event = 'VeryLazy',
+      lazy = true,
       opts = {
         -- recommended settings
         default = {
