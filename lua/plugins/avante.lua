@@ -10,6 +10,7 @@ return {
       return 'make'
     end
   end,
+  lazy = true,
   cmd = { 'AvanteAsk', 'AvanteChat', 'AvanteToggle', 'AvanteBuild', 'AvanteEdit', 'AvanteSwitchProvider' },
   version = false, -- Never set this value to "*"! Never!
   ---@module 'avante'

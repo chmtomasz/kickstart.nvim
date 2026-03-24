@@ -1,7 +1,7 @@
 return {
   'neovim/nvim-lspconfig',
   dependencies = { 'saghen/blink.cmp' },
-  event = { 'BufReadPre', 'BufNewFile' },
+  event = { 'BufReadPost', 'BufNewFile' },
   opts = {
     servers = {
       lua_ls = {},
@@ -25,13 +25,16 @@ return {
       pcall(vim.lsp.config, server, cfg)
     end
 
-    -- Activate all configured servers for their matching filetypes.
-    for server, _ in pairs(opts.servers) do
-      -- Protected enable so missing configs don't raise hard errors.
-      local ok = pcall(vim.lsp.enable, server)
-      if not ok then
-        vim.notify(('Failed to enable LSP server: %s'):format(server), vim.log.levels.WARN)
+    -- Let the buffer render first, then enable servers on the next loop tick.
+    vim.schedule(function()
+      -- Activate all configured servers for their matching filetypes.
+      for server, _ in pairs(opts.servers) do
+        -- Protected enable so missing configs don't raise hard errors.
+        local ok = pcall(vim.lsp.enable, server)
+        if not ok then
+          vim.notify(('Failed to enable LSP server: %s'):format(server), vim.log.levels.WARN)
+        end
       end
-    end
+    end)
   end,
 }

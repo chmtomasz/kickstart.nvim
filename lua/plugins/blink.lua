@@ -69,7 +69,9 @@ return {
     -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
     --
     -- See the fuzzy documentation for more information
-    fuzzy = { implementation = 'prefer_rust_with_warning' },
+    -- Use the Lua fuzzy matcher on Windows to skip loading the Rust native
+    -- binary on cold starts (DLL load adds measurable latency on Windows).
+    fuzzy = { implementation = vim.fn.has 'win32' == 1 and 'lua' or 'prefer_rust_with_warning' },
   },
   opts_extend = { 'sources.default' },
 }
