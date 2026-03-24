@@ -41,3 +41,19 @@ if vim.fn.has 'win32' == 1 and vim.fn.executable 'pwsh' == 1 then
   vim.opt.shellxquote = ''
   vim.opt.shellquote = ''
 end
+
+-- Auto-show diagnostic in floating window on cursor hover
+vim.api.nvim_create_autocmd('CursorHold', {
+  desc = 'Show diagnostics under cursor on hover',
+  group = vim.api.nvim_create_augroup('diagnostic-hover', { clear = true }),
+  callback = function()
+    local opts = {
+      focusable = false,
+      close_events = { 'BufLeave', 'CursorMoved', 'InsertEnter', 'FocusLost' },
+      border = 'rounded',
+      source = 'always',
+      prefix = ' ',
+    }
+    vim.diagnostic.open_float(nil, opts)
+  end
+})
